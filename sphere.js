@@ -10,9 +10,6 @@ const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
-const axesHelper = new THREE.AxesHelper(40);
-scene.add(axesHelper);
-
 
 // *** задаю датчик ***
 const material = new THREE.MeshPhysicalMaterial({
@@ -109,29 +106,6 @@ loader.load('./models/flag2.stl', function (geometry){
 });
 
 
-// *** задаю стол ***
-const materialStol = new THREE.MeshPhysicalMaterial({
-    color: 0xAf1100,
-    metalness: 1,
-    roughness: 1,
-    opacity: 1,
-    transparent: false,
-    transmission: 0.99,
-    clearcoat: 1.0,
-    clearcoatRoughness: 0.25,
-    emissive: 0xFF8C00,
-})
-
-let meshStol;
-const loaderStol = new STLLoader();
-loader.load('./models/stol.stl', function (geometry){
-    geometry.scale(0.5,0.5,0.5)
-    meshStol = new THREE.Mesh(geometry, materialStol);
-    scene.add(meshStol);
-    meshStol.rotation.x = -Math.PI / 2;
-    meshStol.position.y = -1;
-    meshStol.position.x = 10;
-})
 
 
 let mouseDown = false;
